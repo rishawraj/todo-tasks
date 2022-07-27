@@ -1,0 +1,60 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  padding: 50px;
+}
+
+.wrapper {
+  height: 90vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 80px;
+  gap: 10px;
+}
+
+.nav {
+  grid-column: span 3;
+  background-color: lightcoral;
+  /* align-items: center; */
+  /* align-content: center; */
+  /* align-self: center; */
+  /* padding: 10px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav h1 {
+  color: white;
+}
+.side {
+  background-color: lightgreen;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.create-task {
+  flex: 1;
+  padding: 1.5rem;
+  background-color: lightslategray;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 2rem;
+}
+.side input {
+  width: 100%;
+  padding: 0.5rem;
+}
+.side button {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.main {
+  grid-column: span 2;
+  background-color: skyblue;
+}
