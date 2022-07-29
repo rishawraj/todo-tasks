@@ -1,5 +1,11 @@
-import { getDate } from "date-fns";
+import { de } from "date-fns/locale";
 import createToDo from "./modules/addTask";
+import {
+  addToLocal,
+  getTasks,
+  removeTask,
+  removeAll,
+} from "./modules/saveLocal";
 
 const createWrapper = () => {
   const wrapper = document.createElement("div");
@@ -37,13 +43,16 @@ const createWrapper = () => {
       main.innerHTML = "";
       addToLocal(input.value);
       render();
+      input.value = "";
     }
   });
 
   const deleteAllBtn = document.createElement("button");
   deleteAllBtn.textContent = "clear storage";
   deleteAllBtn.addEventListener("click", () => {
-    clearLocalStorage();
+    removeAll();
+    main.innerHTML = "";
+    render();
   });
 
   const main = document.createElement("div");
@@ -67,8 +76,22 @@ const createWrapper = () => {
   return wrapper;
 };
 
+// ? Event delagation
+document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("delete-task-btn")) {
+    let taskName = e.target.parentElement.children[1].textContent;
+    removeTask(taskName);
+    main.innerHTML = "";
+    render();
+    console.log(taskName);
+  }
+});
+
 function render() {
-  // let tasks =
+  let tasks = getTasks();
+  tasks.forEach((element) => {
+    createToDo(element);
+  });
 }
 
 function loadPage() {

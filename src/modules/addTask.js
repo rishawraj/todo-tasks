@@ -12,12 +12,9 @@ export default function createToDo(todo) {
   para.textContent = todo;
 
   const button = document.createElement("button");
+  button.classList.add("delete-task-btn");
   button.type = "submit";
   button.textContent = "delete";
-  button.addEventListener("click", (e) => {
-    let name = e.target.parentElement.children[1].textContent;
-    console.log(name);
-  });
 
   todoItem.appendChild(input);
   todoItem.appendChild(para);
