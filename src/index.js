@@ -7,6 +7,8 @@ import {
   removeAll,
 } from "./modules/saveLocal";
 
+import { checkBox } from "./modules/checkbox";
+
 const createWrapper = () => {
   const wrapper = document.createElement("div");
   wrapper.classList.add("wrapper");
@@ -48,7 +50,8 @@ const createWrapper = () => {
   });
 
   const deleteAllBtn = document.createElement("button");
-  deleteAllBtn.textContent = "clear storage";
+  deleteAllBtn.textContent = "delete all tasks";
+  deleteAllBtn.classList.add("bg-red");
   deleteAllBtn.addEventListener("click", () => {
     removeAll();
     main.innerHTML = "";
@@ -87,11 +90,22 @@ document.addEventListener("click", (e) => {
   }
 });
 
+document.addEventListener("click", (e) => {
+  if (e.target.id == "todo") {
+    let name = e.target.parentElement.children[1].textContent;
+    checkBox(name);
+    main.innerHTML = "";
+    render();
+  }
+});
+
+// ? event delagation
+
 function render() {
   let tasks = getTasks();
-  tasks.forEach((element) => {
-    createToDo(element);
-  });
+  for (let i = 0; i < tasks.length; i += 2) {
+    createToDo(tasks[i], tasks[i + 1]);
+  }
 }
 
 function loadPage() {

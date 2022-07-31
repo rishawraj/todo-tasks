@@ -5,6 +5,9 @@
 body {
   padding: 50px;
 }
+button {
+  cursor: pointer;
+}
 
 .wrapper {
   height: 90vh;
@@ -52,11 +55,13 @@ body {
 
 .main {
   grid-column: span 2;
-  background-color: skyblue;
+  background-color: rgb(179, 225, 243);
   display: flex;
   flex-direction: column;
   gap: 1rem;
   padding: 1rem;
+  /* overflow-x: scroll; */
+  overflow: auto;
 }
 
 .todo-item {
@@ -64,6 +69,39 @@ body {
   background-color: lightpink;
   padding: 1rem;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   text-transform: capitalize;
+  cursor: pointer;
+}
+
+.todo-item:hover {
+  background-color: rgba(255, 182, 193, 0.801);
+}
+
+.todo-checked {
+  background-color: rgba(255, 182, 193, 0.562);
+}
+.line-through {
+  text-decoration: line-through;
+}
+
+.todo-checked:hover {
+  background-color: rgba(255, 182, 193, 0.562);
+}
+
+.delete-task-btn {
+  padding: 5px 10px;
+}
+
+.bg-red {
+  background-color: rgb(189, 88, 88);
+  color: white;
+  font-weight: 600;
+  text-transform: capitalize;
+  border: 2px solid black;
+}
+.bg-red:hover {
+  background-color: white;
+  color: rgb(189, 88, 88);
 }

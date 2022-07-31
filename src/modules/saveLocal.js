@@ -1,6 +1,8 @@
 function addToLocal(task) {
   let tasks = getTasks();
   tasks.push(task);
+  // adding checkbox status
+  tasks.push(false);
   localSave(tasks);
   console.log(localStorage);
 }
@@ -11,15 +13,17 @@ function getTasks() {
     : JSON.parse(localStorage.getItem("tasks"));
 }
 
-// !improve this function
+// ! improve this function
 function removeTask(task) {
   let tasks = getTasks();
   let newTasks = [];
-  tasks.forEach((element, index) => {
-    if (element !== task) {
-      newTasks.push(tasks[index]);
+  for (let i = 0; i < tasks.length; i += 2) {
+    if (tasks[i] !== task) {
+      newTasks.push(tasks[i]);
+      // adding checkbox status
+      newTasks.push(tasks[i + 1]);
     }
-  });
+  }
 
   localSave(newTasks);
 }
@@ -32,4 +36,4 @@ function localSave(tasks) {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-export { addToLocal, getTasks, removeAll, removeTask };
+export { addToLocal, getTasks, removeAll, removeTask, localSave };
