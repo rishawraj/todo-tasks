@@ -33,6 +33,29 @@ button {
   align-items: flex-start;
   justify-content: center;
 }
+
+.main {
+  grid-column: span 2;
+  background-color: rgb(179, 225, 243);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  /* overflow-x: scroll; */
+  overflow: auto;
+}
+/* @media query */
+@media screen and (max-width: 600px) {
+  .side {
+    grid-column: span 3;
+  }
+  .main {
+    grid-column: span 3;
+    overflow: visible;
+  }
+}
+
+/* ------------------ */
 .create-task {
   flex: 1;
   padding: 1.5rem;
@@ -51,17 +74,6 @@ button {
   display: block;
   width: 100%;
   padding: 0.5rem;
-}
-
-.main {
-  grid-column: span 2;
-  background-color: rgb(179, 225, 243);
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 1rem;
-  /* overflow-x: scroll; */
-  overflow: auto;
 }
 
 .todo-item {
